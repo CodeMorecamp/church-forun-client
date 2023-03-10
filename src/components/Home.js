@@ -1,9 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from './Nav'
 
 const Home = () => {
     const [thread, setThread]= useState("")
 
+    const navigate = useNavigate();
+
+    //👇🏻 The useEffect Hook
+    useEffect(() => {
+        const checkUser = () => {
+            if (!localStorage.getItem("_id")) {
+                navigate("/");
+            } else {
+                console.log("Authenticated");
+            }
+        };
+        checkUser();
+    }, [navigate]);
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log([thread])
@@ -31,5 +44,4 @@ const Home = () => {
     </>
   )
 }
-
 export default Home

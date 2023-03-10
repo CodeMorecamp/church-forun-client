@@ -1,9 +1,11 @@
 import React from 'react'
 
 const Nav = () => {
-    const signOut = () => {
-        alert("User signed Out")
-    }
+  const signOut = () => {
+    localStorage.removeItem("_id");
+    //👇🏻 redirects to the login page
+    navigate("/");
+};
   return (
     <nav className='navbar'>
         <h2>Forum</h2>
